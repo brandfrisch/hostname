@@ -1,4 +1,4 @@
-Hostname
+Hostname [![Build Status](https://travis-ci.org/brandfrisch/hostname.svg?branch=master)](https://travis-ci.org/brandfrisch/hostname)
 =========
 
 This is a rule to setup the hostname on a unix system
