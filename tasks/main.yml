@@ -1,0 +1,40 @@
+---
+# tasks file for hostname
+
+- name: Apply hostname
+  hostname:
+    name: "{{ hostname }}"
+  tags:
+    - config
+    - hostname
+
+- name: Re-gather facts
+  action: setup
+  when: ansible_hostname != hostname_fqdn
+  tags:
+    - config
+    - hostname
+
+- name: Change the hostname
+  copy:
+    content: "{{ hostname }}{{ '\n' }}"
+    dest: /etc/hostname
+  tags:
+    - config
+    - hostname
+
+- name: Build hosts file
+  template:
+    src: "{{ hostname_host_file }}"
+    dest: /etc/hosts
+  tags:
+    - config
+    - hostname
+
+- name: Build mailname file
+  copy:
+    content: "{{ hostname_fqdn }}{{ '\n' }}"
+    dest: /etc/mailname
+  tags:
+    - config
+    - hostname
