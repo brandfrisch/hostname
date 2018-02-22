@@ -9,8 +9,8 @@
     - hostname
 
 - name: Re-gather facts
-  action: setup
   when: ansible_hostname != hostname_fqdn
+  action: setup
   tags:
     - config
     - hostname
@@ -27,6 +27,9 @@
   template:
     src: "{{ hostname_host_file }}"
     dest: /etc/hosts
+    owner: root
+    group: root
+    mode: 0644
   tags:
     - config
     - hostname
@@ -35,6 +38,9 @@
   copy:
     content: "{{ hostname_fqdn }}{{ '\n' }}"
     dest: /etc/mailname
+    owner: root
+    group: root
+    mode: 0644
   tags:
     - config
     - hostname
