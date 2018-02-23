@@ -33,7 +33,6 @@ jobs:
             source ~/.venv/bin/activate
             pip install -r requirements.txt
 
-
       - save_cache:
           paths:
             - ~/.venv
@@ -45,3 +44,4 @@ jobs:
           command: |
             source ~/.venv/bin/activate
             ansible-lint ~/hostname
+            yamllint -c ~/hostname/.yamllint ~/hostname
