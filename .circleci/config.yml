@@ -53,7 +53,6 @@ jobs:
             ansible-lint ~/hostname
             yamllint -c ~/hostname/.yamllint ~/hostname
 
-
   release:
     docker:
       - image: circleci/node:8
