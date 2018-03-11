@@ -28,11 +28,13 @@
 
 - name: Build hosts file
   template:
-    src: "hosts.j2"
-    dest: /etc/hosts
+    src: "{{ item }}"
+    dest: "/etc/{{ item | basename | replace('.j2', '') }}"
     owner: root
     group: root
     mode: 0644
+  with_items:
+    - "{{ hostname_config_files }}"
   tags:
     - config
     - hostname
