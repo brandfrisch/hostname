@@ -19,13 +19,16 @@
   copy:
     content: "{{ hostname }}{{ '\n' }}"
     dest: /etc/hostname
+    owner: root
+    group: root
+    mode: 0644
   tags:
     - config
     - hostname
 
 - name: Build hosts file
   template:
-    src: "{{ hostname_host_file }}"
+    src: "hosts.j2"
     dest: /etc/hosts
     owner: root
     group: root

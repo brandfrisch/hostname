@@ -2,4 +2,3 @@
 # defaults file for hostname
 hostname_fqdn: "{{ inventory_hostname }}"
 hostname: "{{ inventory_hostname_short }}"
-hostname_host_file: "hosts.j2"
